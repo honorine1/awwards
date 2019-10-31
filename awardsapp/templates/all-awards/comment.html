@@ -1,0 +1,33 @@
+<!-- {%extends "all-awards/base.html"%}
+
+
+
+{% block content %}
+
+<div class="container">
+
+ {% if comments%}
+  <div class="row" style="padding:20px"> 
+    <div class="col-md-2"></div>
+    {%for comment in comments%}
+     <div class="col-md-8">
+      <h1><strong>{{comment.posted_by}}</strong></h1>
+
+      <h3>{{comment.comment}}</h3>
+      <h3>{{comment.posted_date}}</h3>
+
+     
+
+
+
+    </div>
+    {%endfor%}
+    <div class="col-md-2"></div>
+  </div>
+  {%else%}
+ 
+  <p><a class="btn btn-sm btn-primary" href="{% url 'add_comment' %}"> comment</a></p>
+
+
+{%endif%}
+{%endblock%} -->
