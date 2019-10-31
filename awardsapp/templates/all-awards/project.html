@@ -1,0 +1,64 @@
+{% extends 'all-awards/base.html'%}
+
+{% block content%}
+<h1>AWARDS</h1>
+
+
+<div class="container">
+
+
+    <div class="row" style="margin-left:10px;margin-right:10px;background-color: #d7cdcc;padding-bottom:20px;padding-top:20px;">
+        {%for proImage in proImages%}
+        <div class="col-md-4" style="margin-bottom: 20px;">
+            <div class="card-group" style="background-color:white;">
+
+                <div class="card">
+
+                        <p class="card-title" style="float:left;padding-left:20px;">
+                                <span>{{proImage.user.username}}
+                                <img class="img-responsive img-circle" src="{{proImage.user.profile.profile_pic.url}}"
+                                    alt="" style="width:30px; height:30px"></span>
+                            </p>
+                    <img class="card-img-top" src="{{proImage.proImage.url}}" alt="Card image cap" style="width:300px; height:250px;padding-top:20px;padding-left:20px;">
+                    <div class="card-body">
+
+                        <p class="card-text" style="padding-left:50px;padding-top:10px;"> <strong>{{proImage.proTitle}}</strong></p>
+                        <p class="card-text" style="padding-left:30px;padding-top:10px;"> <strong>
+                                {% autoescape on %}
+                                {{proImage.proDesc| safe}}
+                                {% endautoescape %} </strong></p>
+                        <p class="card-text" style="padding-left:50px;"><a href="{{proImage.proLink}}"><em>view
+                                    Project</em></a></p>
+                        <p class="card-text" style="padding-left:50px;padding-bottom:10px;"><small class="text-muted">Posted
+                                {{proImage.posted_date|timesince}} by {{proImage.user.username}}</small></p>
+                        <!-- <div class="mx-auto" style="width: 200px;">
+                        Centered element
+                    </div> -->
+                        <p style="padding-left:50px;padding-top:10px;"><a href="{% url 'rating' user.id %}" >Vote</a></p>
+                        
+                        <span style="margin-left:50px;"class="label label-default" ><strong>design:</strong>{{proImage.design}}</span>
+                        <span class="label label-primary"><strong>usability:</strong>{{proImage.usability}}</span>
+                        <span class="label label-success"><strong>content:</strong>{{proImage.content}}</span>
+                        <span>By</span> <span>{{proImage.user.username}}</span>
+                        
+                        
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+        {% endfor %}
+       
+    </div>
+
+
+</div><br>
+
+
+
+{% endblock%}
+<!--  -->
