@@ -1,0 +1,48 @@
+{%extends 'all-awards/base.html'%}
+
+{% block content%}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+
+            {% if projects%}
+            <h2>Found {{ projects|length }} of searched term {{message}}</h2>
+            {% else %}
+            <h2> Found 0 projects for the search term .</h2>
+            {% endif %}
+
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+<div class="col-md-1"></div>
+        {% if projects %}
+        {% for project in projects %}
+        <!-- <div class="col-md-3"> -->
+            <h1>{{project.proTitle}}</h1>
+        <!-- </div> -->
+        <div class=" col-md-10">
+            <img style="width:900px;height:500px;" src="{{project.proImage.url}}">
+           <p style="padding-top:10px;padding-left:20px;">
+            {% autoescape on %}
+                 {{project.proDesc| safe}}
+                 {% endautoescape %} 
+            
+                </p>
+            <p>posted on {{project.posted_date|timesince}} by {{project.user.username}}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="col-md-1"></div>
+    </div>
+   
+
+</div>
+
+
+
+{%endblock%}
