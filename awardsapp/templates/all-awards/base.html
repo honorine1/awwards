@@ -1,0 +1,40 @@
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  {%if title%}
+
+  <title>{{title}}</title>
+  {%else%}
+  <title>Projects Awards </title>
+
+  {%endif%}
+
+  {% block styles %}
+    {% bootstrap_css %}
+  {% endblock %}
+
+</head>
+
+<body>
+    {% include 'nav.html'%}
+<!-- <img src="http://www.jgunnmusic.com/wp-content/uploads/2019/06/hd-stock-illustration-transparent-realistic-blank-vector-acrylic-image.jpg" width:1000px, height:500px> -->
+  {% block content %}  {%endblock%}
+
+
+  {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %}
+  {% endblock %}
+
+</body>
+
+</html>
