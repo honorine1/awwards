@@ -1,0 +1,86 @@
+{%extends "all-awards/base.html"%}
+
+{% include 'nav.html'%}
+
+{% block content %}
+
+<div class="container">
+  {% if profile%}
+
+  {%for profile in profile%}
+  <div class="row" style="padding:20px">
+
+    <div class="col-md-4">
+      <img class="center-block img-responsive img-circle" src="{{profile.profile_pic.url}}" alt="" style="width:200px; height:250px">
+    </div>
+    <div class="col-md-8">
+      <h1><strong>{{profile.user.username}}</strong></h1>
+
+      <h3>{{profile.bio}}</h3>
+      <h3>{{profile.contact}}</h3>
+
+      <a class="btn btn-sm btn-primary" href="{% url 'update_profile' %}"> Update Profile</a>
+
+
+
+
+
+    </div>
+    {%endfor%}
+  </div>
+  <div class="row">
+
+
+    {%for proImage in proImages%}
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+
+      <img style="width:900px;height:600px;" src="{{proImage.proImage.url}}">
+      <p>{{proImage.proTitle}}</p>
+
+      <p> {% autoescape on %}
+        {{proImage.proDesc| safe}}
+        {% endautoescape %}
+
+      </p>
+      <small class="text-muted">Posted {{proImage.posted_date|timesince}} by
+        {{proImage.user.username}}</small><br>
+
+      </h5>
+
+    </div>
+    <div class="col-md-2"></div>
+    {%endfor%}
+  </div>
+  {%else%}
+
+
+  <div class="card">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body" styles="width:50px;">
+
+      <h3 class="card-text">complete your profile</h3>
+      <a class="btn btn-sm btn-primary" href="{% url 'update_profile' %}"> complete Profile</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{%endif%}
+</div>
+
+
+<!-- </div> -->
+
+<!-- <div class="col-md-2"></div>  -->
+
+</div>
+
+
+{%endblock%}
