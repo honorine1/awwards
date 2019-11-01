@@ -56,7 +56,7 @@ def new_post(request):
         form = ProjectsForm()
     return render(request, 'all-awards/post_form.html', {"form": form})
 
-@login_required(login_url='/accounts/login/')
+
 def profile(request,user_id  ):
 
     current_user = request.user.username
